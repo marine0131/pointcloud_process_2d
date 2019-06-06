@@ -171,14 +171,14 @@ int main(int argc, char** argv)
         int pos = it->find("=");
         string arg_string = it->substr(2, pos-2);
         if(arg_string.compare("help") == 0){
-            cout << "--trainning_data\n"
-                << "--model_name\n"
-                << "--max_depth\n" 
-                << "--min_sample_count\n"
-                << "--regress_accuracy\n"
-                << "--max_categories\n"
-                << "--calc_var_importanc\n"
-                << "--active_var_count" <<endl;
+            cout << "--trainning_data=feat.xml\n"
+                << "--model_name=model.yaml\n"
+                << "--max_depth=8\n" 
+                << "--min_sample_count=20\n"
+                << "--regress_accuracy=0.f\n"
+                << "--max_categories=10\n"
+                << "--calc_var_importanc=true\n"
+                << "--active_var_count=5" <<endl;
             return 0;
         }
         else if(arg_string.compare("training_data") == 0){
