@@ -80,6 +80,10 @@ class PcRtrees
             model->setRegressionAccuracy(regress_accuracy_);
             // if built surrogate splits
             model->setUseSurrogates(false);
+            // flod branch 
+            model->setCVFolds(10);
+            // remove pruned branches physically,otherwise they are retrained
+            model->setTruncatePrunedTree(true);
             // max cluster number
             model->setMaxCategories(max_categories_);
             // prior prob
@@ -89,8 +93,7 @@ class PcRtrees
             // 
             model->setActiveVarCount(active_var_count_);
             // terminate criteria
-            float iter_criteria = cv::TermCriteria::MAX_ITER+
-                (0.01f>0 ? cv::TermCriteria::EPS : 0);
+            float iter_criteria = cv::TermCriteria::MAX_ITER + cv::TermCriteria::EPS;
             model->setTermCriteria(cv::TermCriteria(
                         iter_criteria, 100, 0.01f));
             // train
